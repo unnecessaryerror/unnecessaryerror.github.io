@@ -1,183 +1,599 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UnnecessaryError</title>
-    <link rel="icon" href="./logo.jpg" type="image/x-icon">
-    <style>
-        *{
-            padding:0px;
-            margin:0px;
-            box-sizing:border-box;
-            font-family:monospace;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Dhakkan 💕! ❤️</title>
+  
+  <!-- Fonts & Confetti Library -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-        }
-     
-        body{
-            background-color:rgb(37, 36, 36);
-            perspective: 500px;
+  <style>
+    :root {
+      --bg-dark: #0d021a;
+      --bg-card: rgba(255, 255, 255, 0.05);
+      --border-card: rgba(255, 255, 255, 0.12);
+      --accent-pink: #ff4d8d;
+      --accent-gold: #ffd700;
+      --text-light: #f5e6ff;
+      --text-sub: #c8b6e2;
+    }
 
-        }
-        header{
-            position:relative;
-            top:0px;
-            z-index:10;
-            background-color:black;
-            height:15vmin;
-            box-shadow:0px 0px 12px 2px black;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            color:white;
-            letter-spacing: 5px;
-        }
-        header>h1{
-            font-size:2.5vmax;
-            letter-spacing:0px;
-            position:relative;
-            overflow:hidden;
-        }
-        header>h1::after{
-            position:absolute;
-            width:100%;
-            left:0;
-            height:100%;
-            z-index:10;
-            background-color:black;
-            content:'';
-            animation-name:typingAnimation;
-            animation-duration: 5s;
-            animation-delay:0.5s;
-            animation-timing-function:steps(20);
-            animation-iteration-count: infinite;
-        }
-        header>h1::before{
-            width:1vmax;
-            height:100%;
-            left:0;
-            animation-delay:0.5s;
-            background-color:white;
-            animation-name:typingAnimation;
-            animation-duration:5s;
-            animation-iteration-count:infinite;
-            z-index:11;
-            animation-timing-function: steps(20);
-            position:absolute;
-            content:'';
-        }
-        @keyframes typingAnimation{
-            50%{
-                left:100%;
-            }
-        }
-        main{
-            transform-style:preserve-3d;
-            padding:2.5vw 2.5vw 2.5vw;
-            color:white;
-            text-align: center;
-        }
-        .upperHeader{
-            padding-inline:2.5vw;
-            width:100%;
-            position:relative;
-            z-index:10;
-            height:4vmax;
-            display:flex;
-            justify-content:start;
-            gap:2vw;
-            align-items:center;
-            background-color:white;
-        }
-        .instagram{
-            background:url('./instagram.png');
-            --icon-size:2.5vmax;
-            display:inline-block;
-            background-size:100% 100%;
-            width:var(--icon-size);
-            height:var(--icon-size);
-        }
-        .linkedin{
-            --icon-size:2.5vmax;
-            display:inline-block;
-            background:url('./linkedin.png');
-            background-size:100% 100%;
-            width:var(--icon-size);
-            height:var(--icon-size);
-        }
-        .orange{
-            color:orange!important;
-        }
-        main video{
-            margin-block:2.5vmax;
-            width:90%;
-            transition-duration:0.5s;
-            height:auto;
-            object-fit:cover;
-            box-shadow:0px 0px 22px 0.5px rgba(255, 255, 255, 0.416);
-        }
-        .video_label{
-            margin-top:-1.25vmax;
-            margin-bottom:1.25vmax;
-            text-decoration:underline;
-        }
-        .purple{
-            background-color: blueviolet !important;
-        }
-        a{
-            color:orangered;
-            
-        }
-    </style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at top center, #230838 0%, var(--bg-dark) 70%);
+      color: var(--text-light);
+      font-family: 'Outfit', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: 60px;
+    }
+
+    /* Ambient Sparkles */
+    .stars {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      background-image: 
+        radial-gradient(2px 2px at 20px 30px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #ff4d8d, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 90px 40px, #ffd700, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 160px 120px, #fff, rgba(0,0,0,0));
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Envelope Hero Section */
+    .envelope-section {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .envelope-box {
+      width: 240px;
+      height: 160px;
+      background: linear-gradient(135deg, #e84393, #d63031);
+      margin: 0 auto 20px;
+      border-radius: 12px;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(232, 67, 147, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+
+    .envelope-box:hover {
+      transform: scale(1.05);
+    }
+
+    .envelope-heart {
+      font-size: 3rem;
+      color: #fff;
+    }
+
+    .cursive-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      color: var(--accent-gold);
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+      margin-bottom: 10px;
+    }
+
+    .sub-text {
+      color: var(--text-sub);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      color: var(--accent-gold);
+      text-align: center;
+      margin: 50px 0 20px;
+    }
+
+    .card-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Calendar Grid */
+    .cal-header {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: var(--accent-pink);
+    }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .cal-day-head {
+      color: var(--text-sub);
+      font-size: 0.8rem;
+      padding-bottom: 5px;
+    }
+
+    .cal-day {
+      padding: 8px 0;
+      border-radius: 8px;
+      color: var(--text-light);
+    }
+
+    .cal-day.active {
+      background: var(--accent-pink);
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 0 12px var(--accent-pink);
+    }
+
+    /* Quotes Section */
+    .quote-card {
+      text-align: center;
+      padding: 30px 20px;
+      font-style: italic;
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+
+    /* Photo Gallery */
+    .gallery-container {
+      display: flex;
+      gap: 15px;
+      overflow-x: auto;
+      padding-bottom: 15px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .gallery-card {
+      min-width: 200px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 15px;
+      padding: 10px;
+      text-align: center;
+      scroll-snap-align: start;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .gallery-card p {
+      font-size: 0.85rem;
+      color: var(--accent-pink);
+    }
+
+    /* Love in Numbers Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      margin-top: 5px;
+    }
+
+    /* Tags Badge Grid */
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .tag {
+      background: rgba(255, 77, 141, 0.15);
+      border: 1px solid rgba(255, 77, 141, 0.3);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    /* Gift Box */
+    .gift-box-wrapper {
+      text-align: center;
+      cursor: pointer;
+      padding: 30px;
+    }
+
+    .gift-icon {
+      font-size: 4rem;
+      transition: transform 0.3s ease;
+    }
+
+    .gift-box-wrapper:hover .gift-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .gift-msg {
+      display: none;
+      margin-top: 15px;
+      color: var(--accent-gold);
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Promise Cards Flip */
+    .promise-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .promise-card {
+      perspective: 1000px;
+      height: 120px;
+      cursor: pointer;
+    }
+
+    .promise-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      border-radius: 12px;
+    }
+
+    .promise-card.flipped .promise-inner {
+      transform: rotateY(180deg);
+    }
+
+    .promise-front, .promise-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      border: 1px solid var(--border-card);
+    }
+
+    .promise-front {
+      background: var(--bg-card);
+      color: var(--accent-gold);
+      font-weight: 600;
+    }
+
+    .promise-back {
+      background: rgba(255, 77, 141, 0.2);
+      color: #fff;
+      font-size: 0.85rem;
+      transform: rotateY(180deg);
+    }
+
+    /* Birthday Cake Section */
+    .cake-section {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .cake-emoji {
+      font-size: 5rem;
+      margin-bottom: 20px;
+    }
+
+    .btn-wish {
+      background: linear-gradient(135deg, var(--accent-pink), #e84393);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(255, 77, 141, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .btn-wish:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 77, 141, 0.6);
+    }
+
+    .wish-result {
+      display: none;
+      margin-top: 25px;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-    <Div class="upperHeader" id="upperHeader">
-        <a href="https://www.instagram.com/unnecessary_error?igsh=MWIyZDFqcTRndXJiaA==" class="instagram"></a>
-        <a href="https://www.linkedin.com/in/prabhanshu-gupta-918a8026b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="linkedin"></a>
-    </Div>
-    <header>
-        <h1>UnnecessaryError</h1>
-        
-    </header>
-    <main>
-        <video src="./Recording.mp4" controls autoplay muted controlsList="nodownload"></video>
-        <div class="video_label">Subject 7 Godot Engine</div>
-        <p>
-            Hello! I'm <span class="orange">Prabhanshu</span>, a passionate game developer currently learning and creating in the exciting world of game development. My journey is just beginning, and I am thrilled to share my progress and experiences as I work on my latest project.
-        </p>
-        <p>I am currently developing a 2D platformer shooter game using the <span class="orange">Godot engine</span>. This project, though not completed yet, is a labor of love where I am blending creativity with technical skills to bring my vision to life.</p>
-        <p>As I work on this game, I am not only building a fun and engaging experience but also continuously learning and growing as a developer. Each step, from conceptualization to implementation, presents new challenges and opportunities to expand my knowledge.</p>
-        <video src="./BouncingBallVideo_11.mp4" controls controlsList="nodownload"></video>
-        <div class="video_label">Bouncing ball 3D animation</div>
-        <video src="./bouncingBallAdvanceWithSound1080x768_1.mkv" controls controlsList="nodownload">
-        </video>
-        <div class="video_label">Evil Ball</div>
-        <a href="./more.html" title="Wanna see more?">More</a>
-    </main>
+
+  <div class="stars"></div>
+
+  <div class="container">
     
-        <script>
-            let x=0;
-            let y=0
-            const gyro = new Gyroscope({frequency:120})
-            // const videoElements = document.querySelectorAll('video');
-            const main = document.querySelector('main');
-            const header = document.getElementById('upperHeader');
-            console.log(window.innerWidth)
-            console.log(window.innerHeight)
-            gyro.addEventListener('reading',(r)=>{
-                console.log(r);
-                x+=gyro.x*2;
-                y+=gyro.y*2;
-                if(x>window.innerHeight+20){
-                    x=window.innerHeight+10;
-                }
-                if(y>window.innerWidth+20){
-                    y=window.innerWidth+10;
-                }
-                main.style.transform = "translate("+y+'px, '+x+'px) rotateY('+y+'deg)';
-                
-            });
-            gyro.start()
-        </script>
+    <!-- Hero Envelope Section -->
+    <section class="envelope-section">
+      <div class="envelope-box" id="envelope" onclick="revealHeader()">
+        <span class="envelope-heart">💌</span>
+      </div>
+      <h1 class="cursive-title">Happy Birthday Dhakkan 💕! 🎂</h1>
+      <p class="sub-text">
+        To the most beautiful girl in my world 💕<br />
+        Today is all about celebrating YOU — the love of my life, the reason for my smile.
+      </p>
+    </section>
+
+    <!-- Calendar Section -->
+    <h2 class="section-title">The Special Day 💕</h2>
+    <div class="card-box">
+      <div class="cal-header">March 2026</div>
+      <div class="cal-grid">
+        <span class="cal-day-head">Sun</span>
+        <span class="cal-day-head">Mon</span>
+        <span class="cal-day-head">Tue</span>
+        <span class="cal-day-head">Wed</span>
+        <span class="cal-day-head">Thu</span>
+        <span class="cal-day-head">Fri</span>
+        <span class="cal-day-head">Sat</span>
+
+        <!-- Calendar Days -->
+        <span class="cal-day">1</span><span class="cal-day">2</span>
+        <span class="cal-day active">3</span>
+        <span class="cal-day">4</span><span class="cal-day">5</span>
+        <span class="cal-day">6</span><span class="cal-day">7</span>
+        <span class="cal-day">8</span><span class="cal-day">9</span>
+        <span class="cal-day">10</span><span class="cal-day">11</span>
+        <span class="cal-day">12</span><span class="cal-day">13</span>
+        <span class="cal-day">14</span><span class="cal-day">15</span>
+        <span class="cal-day">16</span><span class="cal-day">17</span>
+        <span class="cal-day">18</span><span class="cal-day">19</span>
+        <span class="cal-day">20</span><span class="cal-day">21</span>
+        <span class="cal-day">22</span><span class="cal-day">23</span>
+        <span class="cal-day">24</span><span class="cal-day">25</span>
+        <span class="cal-day">26</span><span class="cal-day">27</span>
+        <span class="cal-day">28</span><span class="cal-day">29</span>
+        <span class="cal-day">30</span><span class="cal-day">31</span>
+      </div>
+    </div>
+
+    <!-- Quotes Section -->
+    <h2 class="section-title">Words from the Heart 💕</h2>
+    <div class="card-box quote-card">
+      "If I had to choose between breathing and loving you, I'd use my last breath to say I love you, Dhakkan 💕."
+    </div>
+
+    <!-- Beautiful Moments Photo Gallery -->
+    <h2 class="section-title">Beautiful Moments 📁</h2>
+    <div class="gallery-container">
+      <div class="gallery-card">
+        <img src="./images/first.jpg" alt="Moments" />
+        <p>That gorgeous smile ✨</p>
+      </div>
+      <div class="gallery-card">
+        <img src="./images/second.jpg" alt="Moments" />
+        <p>Glowing as always 🌸</p>
+      </div>
+      <div class="gallery-card">
+        <img src="./images/third.jpg" alt="Moments" />
+        <p>My queen 👑</p>
+      </div>
+      <div class="gallery-card">
+        <img src="./images/fourth.jpg" alt="Moments" />
+        <p>The love of my life ❤️</p>
+      </div>
+      <div class="gallery-card">
+        <img src="./images/fifth.jpg" alt="Moments" />
+        <p>The love of my life ❤️</p>
+      </div>
+    </div>
+      
+
+    <!-- Love in Numbers Section -->
+    <h2 class="section-title">Our Love in Numbers 💕</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num">804+</div>
+        <div class="stat-label">Random "I Love You"</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">198+</div>
+        <div class="stat-label">Late Night Calls</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">804+</div>
+        <div class="stat-label">Times You Made Me Smile</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">293</div>
+        <div class="stat-label">Days of Loving You</div>
+      </div>
+    </div>
+
+    <!-- What Makes You Irresistible -->
+    <h2 class="section-title">What Makes You Irresistible 💕</h2>
+    <div class="tags-container">
+      <span class="tag">💖 Gorgeous</span>
+      <span class="tag">🥰 Loving</span>
+      <span class="tag">✨ Mesmerizing</span>
+      <span class="tag">🔥 Irresistible</span>
+      <span class="tag">👑 My Queen</span>
+      <span class="tag">🌸 Magical</span>
+    </div>
+
+    <!-- Gift Box Section -->
+    <h2 class="section-title">A Gift for You 🎁</h2>
+    <div class="card-box gift-box-wrapper" onclick="toggleGift()">
+      <div class="gift-icon">🎁</div>
+      <p style="color: var(--text-sub); font-size: 0.9rem;">Tap the gift box to unwrap your surprise!</p>
+      <div class="gift-msg" id="giftMsg">
+        My gift to you is my heart — it's always been yours. I promise to love you, protect you, and make you smile every single day. Happy Birthday Dhakkan 💕! ❤️
+      </div>
+    </div>
+
+    <!-- Promises Section -->
+    <h2 class="section-title">My Promises to You 💍</h2>
+    <div class="promise-grid">
+      <div class="promise-card" onclick="this.classList.toggle('flipped')">
+        <div class="promise-inner">
+          <div class="promise-front">🛡️ Protection</div>
+          <div class="promise-back">I promise to always protect your heart and happiness.</div>
+        </div>
+      </div>
+      <div class="promise-card" onclick="this.classList.toggle('flipped')">
+        <div class="promise-inner">
+          <div class="promise-front">😊 Happiness</div>
+          <div class="promise-back">I promise to make you smile every single day.</div>
+        </div>
+      </div>
+      <div class="promise-card" onclick="this.classList.toggle('flipped')">
+        <div class="promise-inner">
+          <div class="promise-front">🤝 Loyalty</div>
+          <div class="promise-back">I will be loyal to you in every way, forever.</div>
+        </div>
+      </div>
+      <div class="promise-card" onclick="this.classList.toggle('flipped')">
+        <div class="promise-inner">
+          <div class="promise-front">♾️ Forever</div>
+          <div class="promise-back">I promise to love you today, tomorrow, and forever.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Birthday Cake & Wish -->
+    <section class="cake-section">
+      <h2 class="section-title">Make a Wish! 🌟</h2>
+      <div class="cake-emoji">🎂</div>
+      <p style="color: var(--text-sub); margin-bottom: 20px;">
+        Close your eyes, take a deep breath, and make a wish... ✨
+      </p>
+      <button class="btn-wish" onclick="blowCandles()">Blow the Candles! 🕯️</button>
+      
+      <div class="wish-result" id="wishResult">
+        <h3 class="cursive-title" style="font-size: 2.8rem;">May all your wishes come true!</h3>
+        <p style="color: var(--accent-pink); font-weight: 600; font-size: 1.2rem;">
+          Happy Birthday Dhakkan 💕! 🥳🎉
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    function revealHeader() {
+      confetti({
+        particleCount: 50,
+        spread: 60,
+        origin: { y: 0.3 }
+      });
+    }
+
+    function toggleGift() {
+      const msg = document.getElementById('giftMsg');
+      if (msg.style.display === 'block') {
+        msg.style.display = 'none';
+      } else {
+        msg.style.display = 'block';
+        confetti({
+          particleCount: 70,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      }
+    }
+
+    function blowCandles() {
+      document.getElementById('wishResult').style.display = 'block';
+      
+      // Fire confetti animation
+      var count = 200;
+      var defaults = {
+        origin: { y: 0.7 }
+      };
+
+      function fire(particleRatio, opts) {
+        confetti(Object.assign({}, defaults, opts, {
+          particleCount: Math.floor(count * particleRatio)
+        }));
+      }
+
+      fire(0.25, {
+        spread: 26,
+        startVelocity: 55,
+      });
+      fire(0.2, {
+        spread: 60,
+      });
+      fire(0.35, {
+        spread: 100,
+        decay: 0.91,
+        scalar: 0.8
+      });
+      fire(0.1, {
+        spread: 120,
+        startVelocity: 25,
+        decay: 0.92,
+        scalar: 1.2
+      });
+      fire(0.1, {
+        spread: 120,
+        startVelocity: 45,
+      });
+    }
+  </script>
 </body>
 </html>

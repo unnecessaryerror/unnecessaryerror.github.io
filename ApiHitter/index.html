@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload Form</title>
+  <style>
+    body{
+        background-color:rgb(17, 16, 16);
+        color:white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Upload File to Custom URL</h1>
+
+  <form id="uploadForm">
+    <label for="urlInput">Enter the URL to send the file:</label><br>
+    <input type="text" id="urlInput" placeholder="Enter URL" required><br><br>
+
+    <label for="fileInput">Choose a file:</label><br>
+    <input type="file" id="fileInput" required><br><br>
+
+    <button type="submit">Upload File</button>
+  </form>
+
+  <p id="status"></p>
+
+  <script>
+    const uploadForm = document.getElementById('uploadForm');
+    const statusText = document.getElementById('status');
+
+    uploadForm.addEventListener('submit', async (event) => {
+      event.preventDefault(); // Prevent form from submitting the traditional way
+
+      const url = document.getElementById('urlInput').value;
+      const file = document.getElementById('fileInput').files[0];
+
+      if (!url || !file) {
+        statusText.textContent = 'Please provide a valid URL and file.';
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (response.ok) {
+          statusText.textContent = 'File uploaded successfully!';
+        } else {
+          statusText.textContent = `Failed to upload file. Status: ${response.status}`;
+        }
+      } catch (error) {
+        statusText.textContent = `Error: ${error.message}`;
+      }
+    });
+  </script>
+
+</body>
+</html>
